@@ -5,8 +5,8 @@ const app = express();
 // ✅ This line is REQUIRED to parse incoming JSON
 app.use(express.json());
 
-const OPENAI_KEY = "sk-proj-xxxxxxxx";
-const PROJECT_ID = "proj_xxxxxxxxx";
+const OPENAI_KEY = "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";
+const PROJECT_ID = "proj_9LK6FxnYly2thPqjI2eIaqRp";
 
 app.post("/", async (req, res) => {
   try {
