@@ -9,6 +9,10 @@ const OPENAI_KEY = "sk-proj-cB4mL2kA_GD5bTDN9a1l-mBZ6RuyT2yoL_lRN4eGDXfp0ge2gELQ
 const PROJECT_ID = "proj_9LK6FxnYly2thPqjI2eIaqRp";
 
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("✅ GPT Proxy is up and running.");
+});
+
 app.post("/", async (req, res) => {
   try {
     console.log("🧠 Received raw body:", JSON.stringify(req.body));
