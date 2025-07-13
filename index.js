@@ -11,7 +11,11 @@ const PROJECT_ID = "proj_9LK6FxnYly2thPqjI2eIaqRp";
 app.use(express.json());
 app.post("/", async (req, res) => {
   try {
-    console.log("Received body:", req.body); // optional debug
+    console.log("🧠 Received raw body:", JSON.stringify(req.body));
+
+    if (!req.body || !req.body.model || !req.body.messages) {
+      return res.status(400).send("❌ Invalid JSON input");
+    }
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -27,9 +31,11 @@ app.post("/", async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.send(result);
   } catch (err) {
+    console.error("🚨 Error:", err);
     res.status(500).json({ error: err.toString() });
   }
 });
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
